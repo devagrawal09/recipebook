@@ -1,0 +1,21 @@
+<template name = "RecipeSingle">
+
+	{{#if $.Session.get 'editMode'}}
+		<div class="new-recipe-container">
+			{{> quickForm collection="RecipeCollection" id="updateRecipe" type="update" doc=recipe class="new-recipe-form"}}
+		</div>
+	{{else}}
+		<button class="btn-primary edit-recipe">Edit</button>
+		<button class="btn-deny remove-recipe">Remove from Book</button>
+
+		<h1 class="page-title">{{recipe.name}}</h1>
+		<h1>{{recipe.desc}}</h1>
+		<h2>Ingredients:</h2>
+		<ul class="shopping-list">
+			{{#each recipe.ingredient}}
+				<li>{{name}} - <span class="amount">{{amount}} </span></li>
+			{{/each}}
+		</ul>
+	{{/if}}		
+
+</template>
